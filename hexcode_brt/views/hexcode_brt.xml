@@ -1,0 +1,60 @@
+<odoo>
+    <data>
+
+        <report
+                id="bartolini_xlsx"
+                model="stock.picking"
+                string="BRT Export"
+                report_type="xlsx"
+                name="brt.xlsx"
+                file="brt.xlsx"
+                attachment_use="False"
+        />
+
+
+        <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">view_partner_form_inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sales_purchases']" position="after">
+                    <page string="Bartolini">
+                        <group>
+                            <field name="codice_cliente" string="Codice Cliente" />
+                            <field name="tipo_notifica" string="Tipo Notifica" />
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+
+
+        <record id="view_order_form_inherit" model="ir.ui.view">
+            <field name="name">view_order_form_inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[last()]" position="after">
+                    <page string="Bartolini">
+                        <group>
+                            <field name="tipo_servizio_bolle" string="Tipo Servizio Bolle"/>
+                            <field name="codice_bolla" string="Codice Bolla" />
+                            <field name="numero_bolla_fattura" string="Numero Bolla/Fattura" />
+                            <field name="numero_colli" string="Numero Colli" />
+                            <field name="peso_lordo_spedizione" string="Peso Lordo Spedizione (Kg)"/>
+                            <field name="importo_contrassegno" string="Importo Contrassegno" />
+                            <field name="note_per_corriere" string="Note per Corriere" />
+                            <field name="note_per_corriere_due" string="Note Per corriere 2"/>
+                            <field name="riferimento_mittente" string="Rif. Mittente" />
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>
